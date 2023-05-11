@@ -1,0 +1,37 @@
+{% extends 'system/base.html' %}
+
+{% block title %}Журнал {{journal.journal_name}}{% endblock %}
+
+{% block content %}
+<tbody>
+  <tr>
+    <td width="514" valign="middle" align="center">
+      <div style="display: inline-block; white-space:break-word; word-wrap:break-word;">
+        <font color = "#00008f">Название журнала: {{journal.journal_name}}</font>
+      </div>
+    </td>
+
+    <div style="height:10px;"></div>
+
+    <td width="514" valign="middle" align="center">
+      <div style="display: inline-block; white-space:break-word; word-wrap:break-word;">
+        <font color = "#00008f">Описание: {{journal.description}}</font>
+      </div>
+    </td>
+
+    <div style="height:10px;"></div>
+
+    {% if article_list %}
+    <ul>
+        {% for article in article_list %}
+            <li><a href="{% url 'article_url' article.article_id %}">{{ article.title }}</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>No articles are available.</p>
+    {% endif %}
+
+
+  </tr>
+</tbody>
+{% endblock %}

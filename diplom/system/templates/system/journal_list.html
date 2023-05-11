@@ -1,0 +1,17 @@
+{% extends 'system/base.html' %}
+
+{% block title %}Система анализа тематической близости научных статей{% endblock %}
+
+{% block content %}
+
+{% if journal_list %}
+    <ul>
+    {% for journal in journal_list %}
+        <li><a href="{% url 'journal' journal.journal_id %}">{{ journal }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No journals are available.</p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'system/base.html' %}
+
+{% block title %}Система анализа тематической близости научных статей{% endblock %}
+
+{% block content %}
+
+{% if article_list %}
+    <ul>
+    {% for article in article_list %}
+        <li><a href="{% url 'article_url' article.article_id %}">{{ article.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No articles are available.</p>
+{% endif %}
+
+{% endblock %}
+
+{% block new_post %}
+{% if user.is_authenticated %}
+<a class="btn btn-primary" href="new_article">Добавить статью</a>
+{% endif %}
+{% endblock %}

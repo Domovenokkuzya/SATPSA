@@ -1,0 +1,48 @@
+{% extends 'system/base.html' %}
+
+{% block title %}Статистика{% endblock %}
+
+{% block content %}
+
+<tbody>
+  <tr>
+    <td width="514" valign="middle" align="center">
+      <div style="display: inline-block; white-space:break-word; word-wrap:break-word;">
+        <font color = "#00008f">Название статьи: {{article.title}}</font>
+      </div>
+    </td>
+    <div style="height:10px;"></div>
+    <td width="514" valign="middle" align="center">
+      <div style="display: inline-block; white-space:break-word;">
+        <font color = "#00008f">25 самых часто встречающихся слов:</font>
+      </div>
+    </td>
+    <div style="height:10px;"></div>
+    <td width="514" valign="middle" align="center">
+      <div style="display: inline-block; white-space:break-word;">
+        <font color = "#00008f">{{most_common}}</font>
+      </div>
+    </td>
+    <div style="height:10px;"></div>
+    <td width="514" valign="middle" align="center">
+      <div style="display: inline-block; white-space:break-word;">
+        <font color = "#00008f">Влияние слов в статье по рубрикам</font>
+      </div>
+    </td>
+    <div style="height:10px;"></div>
+          <style>
+ul {display:block; float:left; width:200px; margin:0 20px;}
+</style>
+      <ul>
+        {% for s in stat %}
+          <li>{{ s }} </li>
+        {% endfor %}
+      </ul>
+      <ul>
+        {% for t in topics %}
+          <li style="white-space:nowrap;">{{ t }} </li>
+        {% endfor %}
+      </ul>
+  </tr>
+</tbody>
+{% endblock %}
