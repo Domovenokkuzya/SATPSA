@@ -1,0 +1,84 @@
+{% extends 'system/base.html' %}
+
+{% block title %}Статья на проверку {{temporary_article.title}}{% endblock %}
+
+{% block content %}
+
+
+<tbody>
+  <tr>
+    <td width="514" valign="middle" align="center">
+      <div style="display: inline-block; white-space:break-word;">
+        <font color = "#00008f">Название статьи: {{temporary_article.title}}</font>
+      </div>
+    </td>
+    <div style="height:10px;"></div>
+    <td width="514" valign="middle" align="center">
+      <div style="display: inline-block; white-space:break-word;">
+        <font color = "#00008f">Авторы: {{temporary_article.fio}}</font>
+      </div>
+    </td>
+    <div style="height:10px;"></div>
+    <td width="514" valign="middle" align="center">
+      <div style="display: inline-block; white-space:break-word;">
+        <font color = "#00008f">Название журнала: {{temporary_article.journal}}</font>
+      </div>
+    </td>
+          <div style="height:10px;"></div>
+    <td width="514" valign="middle" align="center">
+      <div style="display: inline-block; white-space:break-word;">
+        <font color = "#00008f">Рубрика: {{temporary_article.topic}}</font>
+      </div>
+    </td>
+              <div style="height:10px;"></div>
+    <td width="514" valign="middle" align="center">
+      <div style="display: inline-block; white-space:break-word;">
+        <font color = "#00008f">Ключевые слова: {{temporary_article.keywords}}</font>
+      </div>
+    </td>
+                  <div style="height:10px;"></div>
+    <td width="514" valign="middle" align="center" >
+      <div style="display: inline-block; white-space:normal; word-wrap:break-word;">
+        <font color = "#00008f">Аннотация: {{temporary_article.annotations}}</font>
+      </div>
+    </td>
+
+  </tr>
+</tbody>
+<div style="height:10px;"></div>
+        <tr>
+            <a class="btn btn-primary" href="temporary_pdf">PDF-формат</a>
+            <a class="btn btn-primary" href="txt">TXT-формат</a>
+        </tr>
+        <tr>
+            <a class="btn btn-primary" href="confirm">Добавить статью</a>
+            <a class="btn btn-primary" href="delete">Отклонить статью</a>
+        </tr>
+
+{% endblock %}
+
+{% block settings %}
+<div class="pos-f-t">
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-white p-4">
+      <h4 class="text-black">Классификатор</h4>
+      <form id="myFrom" action="classifier">
+        <tr>
+            {% if answer %}
+            <div style="display: inline-block; white-space:normal; word-wrap:break-word;">
+                <font color = "#00008f">Рубрика: {{answer}}</font>
+            </div>
+            {% else %}
+            <button class="btn btn-primary">Определить рубрику</button>
+            {% endif %}
+        </tr>
+      </form>
+    </div>
+  </div>
+  <nav class="navbar navbar navbar-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+</div>
+{% endblock settings %}

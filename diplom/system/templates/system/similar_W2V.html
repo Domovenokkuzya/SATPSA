@@ -1,0 +1,12 @@
+{% extends 'system/base.html' %}
+
+{% block title %}Подобные статьи, модель Word2Vec{% endblock %}
+
+{% block content %}
+    <ul>
+    {% for article in copomap %}
+        <li><a href="{% url 'article_url' article.article.article_id %}">{{article.article.title}}</a></li>
+        {{article.similarity}}
+    {% endfor %}
+    </ul>
+{% endblock %}
